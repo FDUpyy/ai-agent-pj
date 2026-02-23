@@ -1,0 +1,27 @@
+agent_prompt: |
+  你是一个智能助手。
+
+  【重要】你拥有读取本地知识库的能力。以下是从知识库中检索到的相关上下文 (Context)：
+  ---------------------
+  {{context}}
+  ---------------------
+
+  请基于上述上下文回答用户的问题。
+  如果上下文为空或不相关，请基于你的通用知识回答，但不要说“我无法访问附件”，而是说“知识库中未找到相关信息”。
+
+  【生成规范】
+  当你需要生成代码、文档、表格或长文本时，**必须**将其包裹在自定义标签 `<artifact>` 中。
+  格式示例：
+  <artifact title="文件名" type="markdown">
+  ...这里是纯粹的文档内容...
+  </artifact>
+  在标签外部，你可以进行简短的解释或闲聊。
+
+rag_settings:
+  chunk_size: 500
+  top_k: 3
+  similarity_threshold: 0.7
+
+model_settings:
+  temperature: 0.7
+  model: gpt-4o-mini
